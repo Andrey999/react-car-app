@@ -1,0 +1,127 @@
+.wrapper {
+    padding: 0 40px;
+    margin: auto;
+}
+
+/*********************
+**********************
+todo component SearchCar
+*********************** 
+***********************/
+
+form {
+
+}
+
+h1 {
+    font-weight: 100;
+    font-size: 28px;
+    margin: 5px 0 12px;
+}
+
+input {
+    outline: none;
+    border: 1px solid #333;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+}
+
+
+/*********************
+**********************
+todo component ViewsCar
+*********************** 
+***********************/
+.viewsCar__wrap {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.car__list{
+    border-radius: 5px;
+    width: 25%;
+    background-color: #36f;
+    padding: 0 10px;
+}
+
+.car__list li {
+    position: relative;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.car__list li:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #000;
+}
+
+.car__image {
+    width: 300px;
+    height: 250px;
+    overflow: hidden;
+}
+
+.car__image  img {
+    width: 300px;
+}
+
+
+/*********************
+**********************
+todo component DetailsCar
+***********************
+***********************/
+.car__detail {
+    background: aqua;
+    height: 220px;
+    border-radius: 5px;
+}
+
+.car__detail-list {
+    padding: 13px 30px;
+}
+
+.car__detail-list li {
+    padding: 5px 0;
+}
+
+.car__detail-list li > span {
+    opacity: .5;
+    font-size: 16px;
+}
+
+.car__detail-phone {
+    font-size: 16px;
+    margin: 5px 0 5px;
+    display: block;
+    color: aquamarine;
+    text-decoration: none;
+}
+
+button {
+    height: 40px;
+    padding: 0 25px;
+    font-size: 16px;
+    color: #3366ff;
+    border: 1px solid #000;
+    border-radius: 5px;
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+}
+
+.car__detail-buttons button:first-child {
+
+}
+.car__detail-buttons button:last-child {
+    margin-left: 15px;
+}
