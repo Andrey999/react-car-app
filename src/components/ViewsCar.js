@@ -1,14 +1,27 @@
 import React, { Component } from 'react';
 import DetailsCar from './DetailsCar';
-// import PropTypes from 'prop-types';
+import ListCar from './ListCar';
+import PropTypes from 'prop-types';
 
 class ViewsCar extends Component {
     render() {
+        const { cars, textInput, imageNumber, isActiveCar, handleChangeShowImage, handlePhoneShow, isActivePhone } = this.props;
+        const image  = this.props.cars;
+        const name  = this.props.cars;
 
-        const image = this.props.cars;
-        const imageNumber = this.props;
-        const carModelList = this.props.cars.map((item, index) =>
-            <li key={index} onClick={() => this.props.handleChangeShowImage(index)}>{item.name} - {item.model}</li> );
+        const filterInputText = cars.filter(item => item.name.toUpperCase().indexOf(textInput) > -1 ||
+                                            item.name.toLowerCase().indexOf(textInput) > -1 ||
+                                            item.model.toUpperCase().indexOf(textInput) > -1 ||
+                                            item.model.toLowerCase().indexOf(textInput) > -1);
+
+        const carModelList = filterInputText.map((item, index) =>
+            <ListCar
+                key={index}
+                index={index}
+                item={item}
+                handleChangeShowImage={handleChangeShowImage}
+                isActiveCar={isActiveCar}
+            /> );
 
         return (
             <div className="viewsCar__wrap">
@@ -17,12 +30,18 @@ class ViewsCar extends Component {
                 </ul>
 
                 <div className="car__image">
-                    <img src={ image[imageNumber].image } alt="" />
+                    <h2>{ name[imageNumber].name }</h2>
+                    <img src={ image[imageNumber].image } alt={ image[imageNumber].image } />
                 </div>
 
                 <div className="car__detail">
                     <ul className="car__detail-list">
-                        <DetailsCar cars={this.props.cars} />
+                        <DetailsCar
+                            cars={cars}
+                            imageNumber={imageNumber}
+                            handlePhoneShow={ handlePhoneShow }
+                            isActivePhone={ isActivePhone }
+                        />
                     </ul>
                 </div>
             </div>
@@ -30,17 +49,14 @@ class ViewsCar extends Component {
     }
 }
 
-// ViewsCar.propTypes = {
-//     name: PropTypes.string.isRequired,
-//     model: PropTypes.string.isRequired,
-//     image: PropTypes.string.isRequired,
-// };
-
+ViewsCar.propTypes = {
+    cars: PropTypes.array.isRequired,
+    textInput: PropTypes.string.isRequired,
+    imageNumber: PropTypes.number.isRequired,
+    handleChangeShowImage: PropTypes.func.isRequired,
+    handlePhoneShow: PropTypes.func.isRequired,
+    isActivePhone: PropTypes.bool.isRequired,
+    isActiveCar: PropTypes.number.isRequired,
+};
 
 export default ViewsCar;
-
-
-
-
-
-

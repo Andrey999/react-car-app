@@ -1,23 +1,22 @@
 import React, { Fragment } from 'react';
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
 
-const SearchCar = (props) => {
-    const { textInput } = props.textInput;
+const SearchCar = ({ textInput, handleChange, handleSubmit }) => {
     return(
         <Fragment>
-            <form onSubmit={ props.handleSubmit } >
+            <form onSubmit={ handleSubmit } >
                 <h1>Find your car: </h1>
-                <input type="text" value={ textInput } onChange={ props.handleChange } placeholder="Search..." />
+                <input type="text" value={ textInput } onChange={ handleChange } placeholder="Search..." />
             </form>
         </Fragment>
     )
 };
 
-// DetailsCar.propTypes = {
-//     model: PropTypes.string.isRequired,
-//     year: PropTypes.number.isRequired,
-//     owner: PropTypes.string.isRequired,
-// };
+SearchCar.propTypes = {
+    textInput: PropTypes.string.isRequired,
+    handleChange: PropTypes.func.isRequired,
+    handleSubmit: PropTypes.func.isRequired,
+};
 
 export default SearchCar;
