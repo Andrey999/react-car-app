@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 class ViewsCar extends Component {
     render() {
-        const { cars, textInput, imageNumber, isActiveCar, handleChangeShowImage, handlePhoneShow, isActivePhone } = this.props;
+        const { cars, textInput, imageNumber, isActiveCar, handleChangeShowImage, handlePhoneShow, isActivePhone, handleModalOpen } = this.props;
         const image  = this.props.cars;
         const name  = this.props.cars;
 
@@ -41,6 +41,7 @@ class ViewsCar extends Component {
                             imageNumber={imageNumber}
                             handlePhoneShow={ handlePhoneShow }
                             isActivePhone={ isActivePhone }
+                            handleModalOpen={ handleModalOpen }
                         />
                     </ul>
                 </div>
@@ -57,6 +58,7 @@ ViewsCar.propTypes = {
     handlePhoneShow: PropTypes.func.isRequired,
     isActivePhone: PropTypes.bool.isRequired,
     isActiveCar: PropTypes.number.isRequired,
+    handleModalOpen: PropTypes.func.isRequired,
 };
 
 export default ViewsCar;

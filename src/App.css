@@ -6,13 +6,8 @@
 /*********************
 **********************
 todo component SearchCar
-*********************** 
+***********************
 ***********************/
-
-form {
-
-}
-
 h1 {
     font-weight: 100;
     font-size: 28px;
@@ -32,13 +27,14 @@ input {
 /*********************
 **********************
 todo component ViewsCar
-*********************** 
+***********************
 ***********************/
 .viewsCar__wrap {
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .car__list{
@@ -74,14 +70,14 @@ todo component ViewsCar
 }
 
 .active__car {
-    background-color: #9966FF !important;
+    color: #fff;
+    background-color: transparent !important;
 }
 
 .car__image {
     text-align: center;
     width: 302px;
     height: 260px;
-    overflow: hidden;
 }
 
 .car__image h2 {
@@ -89,16 +85,17 @@ todo component ViewsCar
 }
 
 .car__image  img {
-    width: 300px;
-    height: 210px;
+    width: 280px;
+    height: 205px;
     border: 1px solid #660099;
     border-radius: 5px;
     transition: transform .5s ease-in;
     cursor: pointer;
+    box-shadow: 2px 2px 20px 4px rgba(0,0,0, .7);
 }
 
 .car__image  img:hover {
-    transform: scale(1.007);
+    transform: scale(1.05);
 }
 
 /*********************
@@ -156,9 +153,286 @@ button:hover {
     color: #660099;
 }
 
-.car__detail-buttons button:first-child {
-
-}
 .car__detail-buttons button:last-child {
     margin-left: 15px;
+}
+
+/*********************
+**********************
+todo component ModalCar
+***********************
+***********************/
+.modalBackdrop {
+    background-color: rgba(204, 153, 255, .5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    min-height: 100%;
+    transition: .4s ease-in;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.modalBackdrop-active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.cars__modal {
+    border-radius: 5px;
+    background:linear-gradient(-134deg, rgb(0, 131, 255) 0px, rgb(213, 130, 255) 100%);
+    width: 40%;
+    margin: 75px auto;
+    padding: 30px 30px;
+    transition: .4s ease-in;
+    box-shadow: 2px 2px 20px 4px rgba(0,0,0, .7);
+}
+
+.cars__title {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.cars__title span {
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #000;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.cars__modal-items {
+    padding: 25px 30px 40px;
+}
+
+.cars__modal-items:before {
+    content: '';
+    display: block;
+    position: relative;
+    top: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+}
+
+.cars__modal-items li {
+    padding-top: 7px;
+    font-weight: 100;
+}
+
+.car__modal-buttons {
+    display: flex;
+    justify-content: space-around;
+    width: 60%;
+    margin: auto;
+}
+
+
+/*********************
+**********************
+todo component SuccessCarOrder
+***********************
+***********************/
+.success__order {
+    width: 96%;
+    border-radius: 10px;
+    padding: 20px 20px;
+    background:linear-gradient(-134deg, rgb(0, 131, 255) 0px, rgb(213, 130, 255) 100%);
+    margin-bottom: 20px;
+}
+
+.success__order p {
+    font-size: 20px;
+    color: #000;
+    font-weight: 100;
+}
+
+/*******************************************************************
+********************************************************************
+todo  media-queries
+********************************************************************
+*******************************************************************/
+/*  1170 px  */
+@media screen and (max-width: 1170px) {
+    .cars__modal {
+        width: 55%;
+    }
+}
+
+
+/*  925 px  */
+@media screen and (max-width: 925px) {
+    input {
+        width: 36%;
+    }
+
+    .car__list {
+        width: 40%;
+    }
+
+    .car__image {
+        width: 325px;
+        height: 302px;
+    }
+
+    .car__image img {
+        width: 302px;
+        height: 250px;
+    }
+
+    .car__detail {
+        border-radius: 20px;
+        width: 60%;
+        margin: auto;
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    .cars__modal {
+        width: 63%;
+    }
+}
+
+/*  700 px  */
+@media screen and (max-width: 700px) {
+    input {
+        width: 95%;
+    }
+
+    .car__list {
+        width: 100%;
+        text-align: center;
+    }
+
+    .car__image {
+        width: 100%;
+        height: 350px;
+        margin-top: 25px;
+    }
+
+    .car__image img {
+        width: 450px;
+        height: 300px;
+    }
+
+    .car__detail {
+        width: 100%;
+    }
+
+    .cars__modal {
+        width: 85%;
+    }
+
+    .success__order {
+        width: 93%;
+    }
+}
+
+/*  540 px  */
+@media screen and (max-width: 540px) {
+    .wrapper {
+        padding: 0 15px;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    input {
+        width: 93.4%;
+    }
+
+    .car__image img {
+        width: 99%;
+    }
+
+    .cars__modal {
+        margin: 100px auto;
+        padding: 40px 25px;
+    }
+
+    .cars__title {
+        justify-content: space-between;
+    }
+
+    .cars__modal-items {
+        padding: 30px 0 45px;
+    }
+
+    .success__order {
+        width: 91.5%;
+    }
+
+}
+
+/*  450 px  */
+@media screen and (max-width: 450px) {
+    input {
+        width: 92%;
+    }
+
+    .cars__title h2 {
+        font-size: 25px;
+    }
+
+    .cars__title span {
+        width: 30px;
+        height: 30px;
+        font-size: 18px;
+    }
+
+    .car__modal-buttons {
+        justify-content: space-between;
+    }
+
+    .success__order {
+        width: 90%;
+    }
+}
+
+/*  390 px  */
+@media screen and (max-width: 390px) {
+    input {
+        width: 91%;
+    }
+
+    .car__image img {
+        width: 95%;
+        height: 260px;
+    }
+
+    .car__detail-list {
+        padding: 20px 8px;
+    }
+
+    .cars__modal {
+        padding: 30px 15px;
+    }
+
+    .cars__title h2 {
+        font-size: 21px;
+    }
+
+    .cars__title span {
+        width: 28px;
+        height: 28px;
+        font-size: 21px;
+    }
+
+    .car__modal-buttons {
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    .success__order {
+        width: 87.7%;
+    }
 }

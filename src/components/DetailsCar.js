@@ -1,9 +1,8 @@
 import React, { Fragment } from 'react';
-import ModalCar from './ModalCar';
 import PropTypes from "prop-types";
 
 
-const DetailsCar = ({ cars, imageNumber, handlePhoneShow, isActivePhone }) => {
+const DetailsCar = ({ cars, imageNumber, handlePhoneShow, isActivePhone, handleModalOpen }) => {
     return(
         <Fragment>
 
@@ -14,7 +13,7 @@ const DetailsCar = ({ cars, imageNumber, handlePhoneShow, isActivePhone }) => {
 
             <div className="car__detail-buttons">
                 <button onClick={ handlePhoneShow }>Show phone</button>
-                <button onClick={() => <ModalCar/> }>Buy car</button>
+                <button onClick={ handleModalOpen }>Buy car</button>
             </div>
 
         </Fragment>
@@ -26,6 +25,7 @@ DetailsCar.propTypes = {
     imageNumber: PropTypes.number.isRequired,
     handlePhoneShow: PropTypes.func.isRequired,
     isActivePhone: PropTypes.bool.isRequired,
+    handleModalOpen: PropTypes.func.isRequired,
 };
 
 export default DetailsCar;
