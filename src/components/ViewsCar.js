@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 class ViewsCar extends Component {
     render() {
-        const { cars, textInput, imageNumber, isActiveCar, handleChangeShowImage, handlePhoneShow, isActivePhone, handleModalOpen } = this.props;
+        const { cars, textInput, imageNumber, isActiveCar, handleChangeShowImage, handlePhoneShow, isActivePhone, handleModalOpen, handleButtonShowMore, itemsToShowCar, expanded } = this.props;
         const image  = this.props.cars;
         const name  = this.props.cars;
 
@@ -14,7 +14,7 @@ class ViewsCar extends Component {
                                             item.model.toUpperCase().indexOf(textInput) > -1 ||
                                             item.model.toLowerCase().indexOf(textInput) > -1);
 
-        const carModelList = filterInputText.map((item, index) =>
+        const carModelList = filterInputText.slice(0, itemsToShowCar).map((item, index) =>
             <ListCar
                 key={index}
                 index={index}
@@ -27,6 +27,8 @@ class ViewsCar extends Component {
             <div className="viewsCar__wrap">
                 <ul className="car__list">
                     { carModelList }
+
+                    <span onClick={ handleButtonShowMore }>{ expanded ? 'Show less': 'Show more'}</span>
                 </ul>
 
                 <div className="car__image">
@@ -59,6 +61,9 @@ ViewsCar.propTypes = {
     isActivePhone: PropTypes.bool.isRequired,
     isActiveCar: PropTypes.number.isRequired,
     handleModalOpen: PropTypes.func.isRequired,
+    itemsToShowCar: PropTypes.number.isRequired,
+    expanded: PropTypes.bool.isRequired,
+    handleButtonShowMore: PropTypes.func.isRequired,
 };
 
 export default ViewsCar;

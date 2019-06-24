@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from "prop-types";
 
 class SuccessCarOrder extends Component {
     constructor(props) {
@@ -28,5 +29,10 @@ class SuccessCarOrder extends Component {
         );
     }
 }
+
+SuccessCarOrder.propTypes = {
+    cars: PropTypes.array.isRequired,
+    imageNumber: PropTypes.number.isRequired,
+};
 
 export default SuccessCarOrder;

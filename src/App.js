@@ -3,6 +3,7 @@ import SearchCar from './components/SearchCar';
 import ViewsCar from './components/ViewsCar';
 import ModalCar from './components/ModalCar';
 import SuccessCarOrder from './components/SuccessCarOrder';
+import LoaderSpiner from './components/LoaderSpiner';
 import './App.css';
 
 
@@ -18,6 +19,9 @@ class App extends Component {
             isActivePhone: false,
             isModalOpen: false,
             isOrderSuccess: false,
+            itemsToShowCar: 5,
+            expanded: false,
+            isLoading: true,
 
             cars: [
                 { name: "Audi", model: "A7", owner: "Evgeniy", year: 2019, phone: "+7-907-321-54-67", image: "../../assets/audi-a7.jpg" },
@@ -67,6 +71,7 @@ class App extends Component {
       this.setState({ isModalOpen: false })
   };
 
+  //  show  success order  card
   handleSuccessOrder = () => {
       this.setState({
           isOrderSuccess: true,
@@ -74,10 +79,32 @@ class App extends Component {
       })
   };
 
-  render() {
-    const { textInput, cars, imageNumber, isActiveCar, isModalOpen, isOrderSuccess } = this.state;
+  //  button  show more
+  handleButtonShowMore = () => {
+      this.state.itemsToShowCar === 5 ?
+          ( this.setState({ itemsToShowCar: this.state.cars.length, expanded: true }) ) :
+          (  this.setState({ itemsToShowCar: 5, expanded: false }) )
+  };
 
-    return (
+  //  start  loader
+  loaderAsyncCall = () => {
+      return new Promise((resolve) => setTimeout(() => resolve(), 2500));
+  };
+
+  componentDidMount() {
+      // this simulates an async action, after which the component will render the content
+      this.loaderAsyncCall().then(() => this.setState({ isLoading: false }));
+  }
+
+
+    render() {
+    const { textInput, cars, imageNumber, isActiveCar, isModalOpen, isOrderSuccess, itemsToShowCar, expanded, isLoading } = this.state;
+
+        if(isLoading) { // if your component doesn't have to wait for an async action, remove this block
+            return <LoaderSpiner /> ; // render null when app is not ready
+        }
+
+        return (
         <div className="wrapper">
 
             <SearchCar
@@ -97,6 +124,9 @@ class App extends Component {
               isActiveCar={ isActiveCar }
               handleModalOpen={ this.handleModalOpen }
               isModalOpen={ isModalOpen }
+              handleButtonShowMore={ this.handleButtonShowMore }
+              itemsToShowCar={ itemsToShowCar }
+              expanded={ expanded }
           />
 
             { isOrderSuccess ?  <SuccessCarOrder
